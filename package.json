@@ -1,0 +1,47 @@
+{
+  "name": "velox",
+  "version": "2.2.0",
+  "description": "VELOX Studio — 19 integrations, selected scrapr adapters, source captions and hashtags.",
+  "private": true,
+  "main": "server/index.js",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "node --watch server/index.js",
+    "start": "node server/index.js",
+    "test": "node --test test/unit/ test/frontend/",
+    "test:live": "node --test test/live/",
+    "test:all": "node --test test/unit/ test/frontend/ test/live/",
+    "verify:docker": "bash scripts/verify-docker-order.sh",
+    "postinstall": "node scripts/ensure-ytdlp.js",
+    "ensure-engine": "node scripts/ensure-ytdlp.js",
+    "test:browser": "node test/browser/studio.smoke.cjs"
+  },
+  "dependencies": {
+    "cheerio": "1.1.2",
+    "compression": "^1.8.1",
+    "express": "^4.21.2",
+    "ipaddr.js": "2.3.0",
+    "json5": "2.2.3",
+    "undici": "7.30.0"
+  },
+  "keywords": [
+    "downloader",
+    "yt-dlp",
+    "tiktok",
+    "instagram",
+    "youtube",
+    "twitter",
+    "facebook",
+    "pinterest",
+    "social-media",
+    "no-watermark"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "jsdom": "^29.1.1",
+    "playwright": "^1.64.1"
+  }
+}

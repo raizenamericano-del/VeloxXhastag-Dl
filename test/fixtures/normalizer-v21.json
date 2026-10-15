@@ -1,0 +1,195 @@
+[
+  {
+    "method": "fromMedia",
+    "args": [
+      {
+        "platform": "instagram",
+        "platformName": "Instagram",
+        "url": "https://instagram.com/p/a",
+        "title": "A title with #hashtags",
+        "media": [
+          {
+            "kind": "video",
+            "url": "https://cdn.example.com/a.mp4",
+            "height": 1080,
+            "width": 1920
+          },
+          {
+            "kind": "image",
+            "url": "https://cdn.example.com/a.jpg"
+          },
+          {
+            "kind": "audio",
+            "url": "https://cdn.example.com/a.m4a"
+          }
+        ],
+        "ffmpeg": true
+      }
+    ],
+    "expected": {
+      "platform": "instagram",
+      "platformName": "Instagram",
+      "url": "https://instagram.com/p/a",
+      "title": "A title with #hashtags",
+      "author": null,
+      "thumbnail": "https://cdn.example.com/a.jpg",
+      "duration": null,
+      "kind": "video",
+      "isPlaylist": false,
+      "views": null,
+      "likes": null,
+      "items": [
+        {
+          "id": "A-title-with-hashtags",
+          "title": "A title with #hashtags",
+          "thumbnail": null,
+          "duration": null,
+          "kind": "video",
+          "formats": [
+            {
+              "id": "v-1",
+              "label": "1080p · MP4",
+              "note": null,
+              "tag": "HD",
+              "ext": "mp4",
+              "kind": "video",
+              "size": null,
+              "url": "/api/dl?t=direct&u=https%3A%2F%2Fcdn.example.com%2Fa.mp4&n=A-title-with-hashtags&x=mp4"
+            },
+            {
+              "id": "i-1",
+              "label": "Foto HD",
+              "tag": "IMG",
+              "ext": "jpg",
+              "kind": "image",
+              "size": null,
+              "url": "/api/dl?t=direct&u=https%3A%2F%2Fcdn.example.com%2Fa.jpg&n=A-title-with-hashtags&x=jpg"
+            },
+            {
+              "id": "audio-mp3",
+              "label": "MP3 · 192kbps",
+              "tag": "MP3",
+              "ext": "mp3",
+              "kind": "audio",
+              "url": "/api/dl?t=direct&u=https%3A%2F%2Fcdn.example.com%2Fa.m4a&n=A-title-with-hashtags&x=mp3&a=mp3"
+            },
+            {
+              "id": "audio-native",
+              "label": "Audio asli · M4A",
+              "tag": "AUDIO",
+              "ext": "m4a",
+              "kind": "audio",
+              "size": null,
+              "url": "/api/dl?t=direct&u=https%3A%2F%2Fcdn.example.com%2Fa.m4a&n=A-title-with-hashtags&x=m4a"
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    }
+  },
+  {
+    "method": "normalizeYtDlp",
+    "args": [
+      {
+        "title": "Example YouTube #title",
+        "description": "A real caption",
+        "id": "fixture",
+        "formats": [
+          {
+            "format_id": "137",
+            "url": "https://cdn.example.com/a.mp4",
+            "ext": "mp4",
+            "height": 1080,
+            "width": 1920,
+            "acodec": "none",
+            "vcodec": "avc1"
+          },
+          {
+            "format_id": "140",
+            "url": "https://cdn.example.com/a.m4a",
+            "ext": "m4a",
+            "vcodec": "none",
+            "acodec": "aac"
+          }
+        ]
+      },
+      {
+        "platform": "youtube",
+        "platformName": "YouTube",
+        "url": "https://youtu.be/a",
+        "ffmpeg": true
+      }
+    ],
+    "expected": {
+      "platform": "youtube",
+      "platformName": "YouTube",
+      "url": "https://youtu.be/a",
+      "title": "Example YouTube #title",
+      "author": null,
+      "thumbnail": null,
+      "duration": null,
+      "kind": "video",
+      "isPlaylist": false,
+      "views": null,
+      "likes": null,
+      "items": [
+        {
+          "id": "fixture",
+          "title": "Example YouTube #title",
+          "thumbnail": null,
+          "duration": null,
+          "kind": "video",
+          "splitOnly": false,
+          "formats": [
+            {
+              "id": "best-merged",
+              "label": "Terbaik · MP4",
+              "note": "video + audio digabung",
+              "tag": "MAX",
+              "ext": "mp4",
+              "kind": "video",
+              "url": "/api/dl?t=engine&u=https%3A%2F%2Fyoutu.be%2Fa&f=bv*%5Bheight%3C%3D1080%5D%5Bext%3Dmp4%5D%2Bba%5Bext%3Dm4a%5D%2Fbv*%5Bheight%3C%3D1080%5D%2Bba%2Fb&x=mp4&n=Example-YouTube-title-best"
+            },
+            {
+              "id": "137",
+              "label": "1080p · MP4",
+              "note": "video saja, tanpa audio",
+              "tag": "HD",
+              "ext": "mp4",
+              "kind": "video",
+              "size": null,
+              "url": "/api/dl?t=engine&u=https%3A%2F%2Fyoutu.be%2Fa&f=137&x=mp4&n=Example-YouTube-title"
+            },
+            {
+              "id": "audio-mp3",
+              "label": "MP3 · 128kbps",
+              "tag": "MP3",
+              "ext": "mp3",
+              "kind": "audio",
+              "url": "/api/dl?t=engine&u=https%3A%2F%2Fyoutu.be%2Fa&f=140&a=mp3&n=Example-YouTube-title"
+            },
+            {
+              "id": "140",
+              "label": "Audio asli · M4A",
+              "tag": "AUDIO",
+              "ext": "m4a",
+              "kind": "audio",
+              "size": null,
+              "url": "/api/dl?t=engine&u=https%3A%2F%2Fyoutu.be%2Fa&f=140&a=native&x=m4a&n=Example-YouTube-title"
+            },
+            {
+              "id": "thumb",
+              "label": "Thumbnail · JPG",
+              "tag": "IMG",
+              "ext": "jpg",
+              "kind": "image",
+              "url": "/api/dl?t=direct&u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Ffixture%2Fmaxresdefault.jpg&n=Example-YouTube-title-thumb"
+            }
+          ]
+        }
+      ],
+      "warnings": []
+    }
+  }
+]

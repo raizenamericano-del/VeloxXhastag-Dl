@@ -1,0 +1,46 @@
+VELOX STUDIO 2.2
+Simpan inspirasimu.
+
+1. Ekstrak seluruh ZIP ini.
+2. Pasang Node.js 20.19+ (atau Node 22 LTS).
+3. Buka terminal di folder yang berisi package.json.
+4. Jalankan:
+      npm ci
+      npm start
+5. Buka http://localhost:3000
+
+JANGAN hanya membuka public/index.html dengan double click.
+Downloader membutuhkan server Node.js agar endpoint /api bekerja.
+
+Untuk fitur engine lengkap, pasang Python + yt-dlp dan ffmpeg.
+Hook npm mencoba menyiapkan yt-dlp, tetapi ffmpeg perlu tersedia di sistem.
+
+Jika menyalin .env.example ke .env tanpa mengubah PORT, port menjadi 8000.
+Buka http://localhost:8000 dalam kasus itu.
+
+Panduan lengkap: README.md
+Daftar perubahan: CHANGELOG.md
+Hasil pengujian & batasannya: docs/TESTING.md
+Preview: docs/preview-desktop.webp, docs/preview-mobile.webp, docs/preview-light.webp
+
+ZIP berisi source lengkap. node_modules, engine binary, cookie, credential,
+file media uji, dan cache tidak disertakan. Jalankan npm ci setelah ekstraksi.
+
+Konten publik tidak otomatis bebas hak cipta.
+Gunakan konten milikmu sendiri atau yang telah mendapat izin.
+
+BARU DI 2.2:
+- Spotify: adapter Spotisaver, SpotiDown, Spotimate dari coflyn/scrapr.
+- Reddit: RapidSave sebagai fallback; Bilibili: API langsung sebelum engine.
+- Salin deskripsi, semua hashtag, satu hashtag, dan simpan teks .txt.
+- File resolver TikTok/Instagram/YouTube tidak diubah.
+- Desain Studio tetap dipertahankan.
+
+Audio Spotify berasal dari provider pihak ketiga, bukan jaminan file asli Spotify.
+Jika provider gagal saat resolve, info/preview resmi tetap dicoba.
+Album/playlist hanya info koleksi. Keberhasilan mengikuti akses provider.
+SCRAPR_ENABLED=false untuk menonaktifkan adapter baru (fitur copy tetap aktif).
+Untuk hosting multi-process, baca batas tiket di docs/SCRAPR-2.2.md.
+
+Dokumentasi terbaru: docs/SCRAPR-2.2.md.
+Asal kode & lisensi: server/integrations/scrapr/PROVENANCE.md dan LICENSE.
